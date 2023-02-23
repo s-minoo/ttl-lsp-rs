@@ -370,22 +370,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "nrs-language-server"
-version = "0.1.0"
-dependencies = [
- "chumsky",
- "dashmap",
- "env_logger",
- "im-rc",
- "log",
- "ropey",
- "serde",
- "serde_json",
- "tokio",
- "tower-lsp",
-]
-
-[[package]]
 name = "ntapi"
 version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -819,6 +803,22 @@ name = "tower-service"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "360dfd1d6d30e05fda32ace2c8c70e9c0a9da713275777f5a4dbb8a1893930c6"
+
+[[package]]
+name = "ttl-lsp-rs"
+version = "0.1.0"
+dependencies = [
+ "chumsky",
+ "dashmap",
+ "env_logger",
+ "im-rc",
+ "log",
+ "ropey",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower-lsp",
+]
 
 [[package]]
 name = "typenum"

@@ -1,5 +1,5 @@
 [package]
-name = "nrs-language-server"
+name = "ttl-lsp-rs"
 version = "0.1.0"
 edition = "2021"
 

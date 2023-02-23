@@ -1,11 +1,11 @@
 use std::collections::{HashMap};
 
 use dashmap::DashMap;
-use nrs_language_server::chumsky::{parse, type_inference, Func, ImCompleteSemanticToken};
-use nrs_language_server::completion::completion;
-use nrs_language_server::jump_definition::{get_definition};
-use nrs_language_server::reference::get_reference;
-use nrs_language_server::semantic_token::{semantic_token_from_ast, LEGEND_TYPE};
+use ttl_lsp_rs::chumsky::{parse, type_inference, Func, ImCompleteSemanticToken};
+use ttl_lsp_rs::completion::completion;
+use ttl_lsp_rs::jump_definition::{get_definition};
+use ttl_lsp_rs::reference::get_reference;
+use ttl_lsp_rs::semantic_token::{semantic_token_from_ast, LEGEND_TYPE};
 use ropey::Rope;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -347,7 +347,7 @@ impl LanguageServer for Backend {
             let mut ret = Vec::with_capacity(completions.len());
             for (_, item) in completions {
                 match item {
-                    nrs_language_server::completion::ImCompleteCompletionItem::Variable(var) => {
+                    ttl_lsp_rs::completion::ImCompleteCompletionItem::Variable(var) => {
                         ret.push(CompletionItem {
                             label: var.clone(),
                             insert_text: Some(var.clone()),
@@ -356,7 +356,7 @@ impl LanguageServer for Backend {
                             ..Default::default()
                         });
                     }
-                    nrs_language_server::completion::ImCompleteCompletionItem::Function(
+                    ttl_lsp_rs::completion::ImCompleteCompletionItem::Function(
                         name,
                         args,
                     ) => {
@@ -415,12 +415,12 @@ impl Backend {
                     k.start,
                     k.end,
                     match v {
-                        nrs_language_server::chumsky::Value::Null => "null".to_string(),
-                        nrs_language_server::chumsky::Value::Bool(_) => "bool".to_string(),
-                        nrs_language_server::chumsky::Value::Num(_) => "number".to_string(),
-                        nrs_language_server::chumsky::Value::Str(_) => "string".to_string(),
-                        nrs_language_server::chumsky::Value::List(_) => "[]".to_string(),
-                        nrs_language_server::chumsky::Value::Func(_) => v.to_string(),
+                        ttl_lsp_rs::chumsky::Value::Null => "null".to_string(),
+                        ttl_lsp_rs::chumsky::Value::Bool(_) => "bool".to_string(),
+                        ttl_lsp_rs::chumsky::Value::Num(_) => "number".to_string(),
+                        ttl_lsp_rs::chumsky::Value::Str(_) => "string".to_string(),
+                        ttl_lsp_rs::chumsky::Value::List(_) => "[]".to_string(),
+                        ttl_lsp_rs::chumsky::Value::Func(_) => v.to_string(),
                     },
                 )
             })

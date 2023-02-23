@@ -8,7 +8,7 @@ use tower_lsp::lsp_types::{SemanticTokenType};
 use crate::semantic_token::{LEGEND_TYPE};
 
 /// This is the parser and interpreter for the 'Foo' language. See `tutorial.md` in the repository's root to learn
-/// about it.
+/// about it. 
 pub type Span = std::ops::Range<usize>;
 #[derive(Debug)]
 pub struct ImCompleteSemanticToken {
